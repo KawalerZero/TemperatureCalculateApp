@@ -26,7 +26,7 @@ type
     function CountKelTemp(tempNumber: extended; tempSource: string): string;
     function CountFarTemp(tempNumber: extended; tempSource: string): string;
   public
-    constructor Create(AOwner: TComponent); override;
+    constructor Create(component: TComponent); override;
   end;
 
 type
@@ -38,11 +38,11 @@ var
 implementation
 
 {$R *.lfm}
-constructor TTemperatureCalculateApp.Create(AOwner: TComponent);
+constructor TTemperatureCalculateApp.Create(component: TComponent);
 var
   index: integer;
 begin
-  inherited Create(AOwner);
+  inherited Create(component);
   for index := Ord(Low(Temperatures)) to Ord(High(Temperatures)) do
   begin
     TempsCmbBox.Items.Add(GetEnumName(TypeInfo(Temperatures), index));
@@ -122,8 +122,9 @@ begin
   KelTempLabel.Caption := TemperatureCalculateApp.CountKelTemp(tempNumberFloat, tempSource);
   FarTempLabel.Caption := TemperatureCalculateApp.CountFarTemp(tempNumberFloat, tempSource);
   except
-  on E: EConvertError do ShowMessage('Please enter a numeric value');
-  on E: Exception do ShowMessage('Something went terribly wrong. Please contact support. Message:'+ E.Message);
+  on convertException: EConvertError do ShowMessage('Please enter a numeric value');
+  on generalException: Exception do ShowMessage('Something went terribly wrong. Please contact support. Message:'+ generalException.Message);
   end;
 end;
+
 end.
