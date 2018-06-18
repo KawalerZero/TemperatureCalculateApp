@@ -1,0 +1,59 @@
+object TemperatureCalculateApp: TTemperatureCalculateApp
+  Left = 1406
+  Height = 327
+  Top = 206
+  Width = 442
+  Caption = 'TemperatureCalculateApp'
+  ClientHeight = 327
+  ClientWidth = 442
+  LCLVersion = '1.8.4.0'
+  object TempsCmbBox: TComboBox
+    Left = 104
+    Height = 23
+    Top = 16
+    Width = 100
+    ItemHeight = 15
+    Style = csDropDownList
+    TabOrder = 0
+  end
+  object GenerateTempBtn: TButton
+    Left = 8
+    Height = 33
+    Top = 56
+    Width = 200
+    Caption = 'Calculate temperatures'
+    OnClick = GenerateTempBtnClick
+    TabOrder = 1
+  end
+  object CelTempLabel: TLabel
+    Left = 315
+    Height = 15
+    Top = 16
+    Width = 37
+    Caption = 'Celsius'
+    ParentColor = False
+  end
+  object KelTempLabel: TLabel
+    Left = 315
+    Height = 15
+    Top = 48
+    Width = 32
+    Caption = 'Kelvin'
+    ParentColor = False
+  end
+  object FarTempLabel: TLabel
+    Left = 315
+    Height = 15
+    Top = 80
+    Width = 56
+    Caption = 'Fahrenheit'
+    ParentColor = False
+  end
+  object NumberOfTempEdit: TEdit
+    Left = 8
+    Height = 23
+    Top = 16
+    Width = 80
+    TabOrder = 2
+  end
+end
